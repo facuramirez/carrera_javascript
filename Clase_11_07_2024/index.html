@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase 11_07_2024</title>
+    <link rel="stylesheet" href="./estilos.css">
+  </head>
+  <body>    
+    <h1>Clase 11 - 11.07.24</h1>
+    <h4 id="miAlerta" >Envío de formulario exitoso!</h4>
+
+    <form id="miForm">
+      <p>
+        <label >Nombre:</label>
+        <input type="text" name="nombre" id="nombreInput" class="clase-nombre" autocomplete="off" required disabled>
+        <span id="error-nombre"></span>
+      </p>
+
+      <p>
+        <label>Apellido:</label>
+        <input type="text" name="apellido">
+      </p>
+
+      <p>
+        <label>Edad:</label>
+        <input type="text" name="edad" id="edad" required autocomplete="off">
+      </p>
+
+      <button type="submit">Enviar</button>
+    </form>
+
+    <script src="./06-A-formulario.js" type="module"></script>
+  </body>
+</html>

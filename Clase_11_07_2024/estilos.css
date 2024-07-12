@@ -1,0 +1,38 @@
+body {
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.animacion-alerta {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: green;
+    padding: 5px 10px;
+    color: white;
+    font-size: 24px;
+    border-radius: 10px;
+    animation-name: animacion1;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+}
+
+@keyframes animacion1 {
+    0% {
+        opacity: 1;
+        transform: translateX(110%);
+    }
+    30% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    70% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(110%);
+    }
+}
