@@ -1,6 +1,19 @@
 import { Empresa, Gerente, Empleado } from "./clases.js";
+import { evento } from "./clases.js";
 
 const miEmpresa = new Empresa("e-Contact");
+miEmpresa.addEventListener("evento", () => {
+  console.log("hola");
+});
+
+miEmpresa.dispatchEvent(new CustomEvent("evento", { detail: { msg: "hola" } }));
+const montoAumento = document.createElement("input");
+montoAumento.style.position = "fixed";
+montoAumento.style.top = "90px";
+montoAumento.style.right = "10px";
+montoAumento.style.fontSize = "20px";
+montoAumento.id = "idDeaumento";
+document.body.appendChild(montoAumento);
 
 const dispararEvento = document.createElement("button");
 dispararEvento.style.position = "fixed";
@@ -9,6 +22,27 @@ dispararEvento.style.right = "10px";
 dispararEvento.textContent = "Aumentar ingresos";
 dispararEvento.style.fontSize = "20px";
 document.body.appendChild(dispararEvento);
+dispararEvento.onclick = () => {
+  const inputAumento = document.getElementById("idDeaumento");
+  const value = inputAumento.value;
+
+  const nuevoEvento = new CustomEvent("aumentar-ingreso", {
+    detail: parseInt(value),
+  });
+  evento.dispatchEvent(nuevoEvento);
+
+  const personal = miEmpresa.listarPersonal();
+  const listadoPersonal = document.getElementById("listado-personal");
+  listadoPersonal.innerHTML = "";
+
+  personal.forEach((persona) => {
+    const { nombre, apellido, ingreso } = persona;
+    const tag = document.createElement("h4");
+    tag.textContent = `${nombre} - ${apellido} - ${ingreso}`;
+
+    listadoPersonal.appendChild(tag);
+  });
+};
 
 const botonListarPersonal = document.createElement("button");
 botonListarPersonal.textContent = "Listar personal";
@@ -22,9 +56,9 @@ botonListarPersonal.onclick = () => {
   listadoPersonal.innerHTML = "";
 
   personal.forEach((persona) => {
-    const { nombre, apellido } = persona;
+    const { nombre, apellido, ingreso, cargo } = persona;
     const tag = document.createElement("h4");
-    tag.textContent = `${nombre} - ${apellido}`;
+    tag.textContent = `${nombre} - ${apellido} - ${ingreso} - ${cargo}`;
 
     listadoPersonal.appendChild(tag);
   });
@@ -40,7 +74,7 @@ miForm.addEventListener("submit", function (event) {
   const data = new FormData(event.target);
   let myData = data.entries();
   myData = Object.fromEntries(myData);
-
+  console.log(myData);
   const { rut, nombre, apellido, ingreso, lista } = myData;
 
   if (lista === "empleado") {
@@ -48,7 +82,7 @@ miForm.addEventListener("submit", function (event) {
       rut,
       nombre,
       apellido,
-      ingreso,
+      ingreso: parseInt(ingreso),
       cargo: lista,
     });
     miEmpresa.agregarPersona(nuevoEmpleado);
@@ -64,6 +98,16 @@ miForm.addEventListener("submit", function (event) {
   }
 
   alert("Registro exitoso");
-});
 
-console.log(324234);
+  const personal = miEmpresa.listarPersonal();
+  const listadoPersonal = document.getElementById("listado-personal");
+  listadoPersonal.innerHTML = "";
+
+  personal.forEach((persona) => {
+    const { nombre, apellido, ingreso, cargo } = persona;
+    const tag = document.createElement("h4");
+    tag.textContent = `${nombre} - ${apellido} - ${ingreso} - ${cargo}`;
+
+    listadoPersonal.appendChild(tag);
+  });
+});

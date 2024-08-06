@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase 12_07_2024</title>    
+  </head>
+  <body>
+    <h1>Clase 12 - 18.07.24</h1>
+
+    <form id="miForm">
+      <p>
+        <label>RUT: </label>
+        <input type="text" name="rut" />
+      </p>
+
+      <p>
+        <label>Nombre: </label>
+        <input type="text" name="nombre" />
+      </p>
+
+      <p>
+        <label>Apellido: </label>
+        <input type="text" name="apellido" />
+      </p>
+
+      <p>
+        <label>Ingreso: </label>
+        <input type="text" name="ingreso" />
+      </p>
+
+      <p>
+        <label>Cargo: </label>
+        <select name="lista">
+          <option value="empleado">Empleado</option>
+          <option value="gerente" selected>Gerente</option>
+        </select>
+      </p>            
+      <p>
+      <input type="password" inputmode="+">
+    </p>
+      <!-- A CONTINUACION ESTAN COMENTADAS LAS NUEVAS ETIQUETAS DADAS -->
+      <!--       
+      <p>
+        <input type="checkbox" name="deportista" /><label>Deportista</label>
+        <input type="checkbox" name="chileno" /><label>Chileno</label>
+      </p>
+
+      
+      <p>
+        <input type="radio" name="filtro" value="menor" /><label
+          >Menor a 18 años</label
+        >
+        <input type="radio" name="filtro" value="intermedio" /><label
+          >Mayor a 18 y menor de 65</label
+        >
+        <input type="radio" name="filtro" value="mayor" checked /><label
+          >Menor a 65 años</label
+        >
+      </p>
+
+      
+      <p>
+        <input type="color" name="color" />
+      </p>
+
+      
+      <p>
+        <input type="date" name="fecha" />
+      </p>
+
+      
+      <p>
+        <input type="search" list="listado" name="busqueda" />
+        <datalist id="listado">
+          <option>Facundo</option>
+          <option>Daniel</option>
+          <option>Laura</option>
+          <option>María</option>
+          <option>Corneliu</option>
+        </datalist>
+      </p>
+
+      
+      <p>
+        <input type="password" name="password"/><input type="checkbox" /><label>Mostrar</label>
+      </p>
+
+      
+      <p>
+        <input type="reset" value="Resetar" />
+      </p> -->
+
+      <button type="submit">Registrar</button>
+    </form>
+
+    <div>
+      <p>
+        <label>Rut: </label>
+        <span id="rut"></span>
+      </p>
+
+      <p>
+        <label>Nombre: </label>
+        <span id="nombre"></span>
+      </p>
+
+      <p>
+        <label>Apellido: </label>
+        <span id="apellido"></span>
+      </p>
+    </div>
+
+    <div id="listado-personal"></div>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Rut</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Ingreso</th>
+          <th>Cargo</th>
+        </tr>
+      </thead>
+      <tbody id="my-body">
+        <tr>
+          <td>234324</td>
+          <td>Carlos</td>
+          <td>Gimenez</td>
+          <td>9000</td>
+          <td>empleado</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script src="./main-clases.js" type="module"></script>
+    <!-- <script src="./objeto-set.js" type="module"></script> -->
+  </body>
+</html>
