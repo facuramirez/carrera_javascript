@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de animales</title>
+    <link rel="stylesheet" href="./elementos.css" />
+</head>
+
+<body>
+    <form id="formAnimales">
+        <p>
+            <label>ID: </label>
+            <input type="text" name="idMascota" />
+        </p>
+
+        <p>
+            <label>Tipo: </label>
+            <select name="tipoMascota">
+                <option value="">(tipo mascota)</option>
+                <option value="perro">Perro</option>
+                <option value="gato">Gato</option>
+                <option value="hamster">Hámster</option>
+            </select>
+        </p>
+
+        <p>
+            <label>Nombre: </label>
+            <input type="text" name="nombreMascota" />
+        </p>
+
+        <p>
+            <label>Peso: </label>
+            <input type="text" name="pesoMascota" />
+        </p>
+
+        <button type="submit">Registar</button>
+    </form>
+
+    <span id="error-form"></span>
+    <div>
+        <table border="1" style="margin-top: 5rem;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>Nombre</th>
+                    <th>Peso</th>
+                </tr>
+            </thead>
+            <tbody id="mi-tabla">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script src="main.js" type="module"></script>
+</body>
+
+</html>

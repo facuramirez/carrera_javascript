@@ -7,7 +7,8 @@ import { Empresa, Gerente, Empleado } from "./clases.js";
 import { evento } from "./clases.js";
 import { agregarEventoChangeCargos } from "./eventoChangeCargos.js";
 import { validarFormulario } from "./validaciones.js";
-
+for (const element of object) {
+}
 const miEmpresa = new Empresa("e-Contact");
 // miEmpresa.addEventListener("evento", () => {
 //   console.log("hola");
@@ -177,11 +178,15 @@ miForm.addEventListener("submit", function (event) {
   }
 
   const data = new FormData(event.target);
+
   let myData = data.entries();
+  for (const element of myData) {
+    console.log(element);
+  }
   myData = Object.fromEntries(myData);
-
+  console.log(myData);
   const { rut, nombre, apellido, ingreso, lista } = myData;
-
+  console.log(nombre);
   const resultado = miEmpresa.listarPersonal().some((persona) => {
     if (rut === persona.rut) {
       return true;

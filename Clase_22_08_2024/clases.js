@@ -1,11 +1,10 @@
 export const evento = new EventTarget();
 
-export class Empresa extends EventTarget {
+export class Empresa {
   nombre;
   personal = [];
 
-  constructor(nombre) {
-    super();
+  constructor(nombre) {    
     this.nombre = nombre;
   }
 
