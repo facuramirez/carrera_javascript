@@ -1,58 +1,75 @@
-import {validaNombre, validaPeso, validaObjeto} from "./validaciones.js";
-import {Gato, Perro, Hamster, arregloAnimales} from "./clases.js";
-import {addSelectForm, addChangeEvent, addSelectOption} from "./funciones.js";
+import { validaNombre, validaPeso, validaObjeto } from "./validaciones.js";
+import { Gato, Perro, Hamster, arregloAnimales } from "./clases.js";
+import {
+  addSelectForm,
+  addChangeEvent,
+  addSelectOption,
+  addRow,
+} from "./funciones.js";
 
-const formCurso = document.getElementById('formAnimales');
+const formCurso = document.getElementById("formAnimales");
 
 addSelectForm();
-addChangeEvent('selectAnimales');
+addChangeEvent("selectAnimales");
 
-formCurso.addEventListener('submit', function(evento) {
-    evento.preventDefault();
+formCurso.addEventListener("submit", function (evento) {
+  evento.preventDefault();
 
-    const datos = new FormData(evento.target);
+  const datos = new FormData(evento.target);
 
-    let infoMascotas = datos.entries();
+  let infoMascotas = datos.entries();
 
-    infoMascotas = Object.fromEntries(infoMascotas);
-    
-    if(!validaObjeto(infoMascotas)){
-      console.log("Existen elementos del formulario sin información.");
-      return;
-    }
-    
-    const {
-            idMascota, 
-            tipoMascota, 
-            nombreMascota, 
-            pesoMascota
-          } = infoMascotas;
+  infoMascotas = Object.fromEntries(infoMascotas);
 
-    if( !validaNombre(nombreMascota) ){
-      console.log("Nombre de mascota no valido.")
-      return;
-    }
-    
-    if( !validaPeso(pesoMascota) ){
-      console.log("Peso de la mascota no es numérico")
-      return;
-    }
- 
-    if( tipoMascota === "perro"){
-      const newPerro = new Perro(idMascota, tipoMascota, nombreMascota, pesoMascota);
-      arregloAnimales.registar(newPerro);
-    }
+  if (!validaObjeto(infoMascotas)) {
+    console.log("Existen elementos del formulario sin información.");
+    return;
+  }
 
-    if( tipoMascota === "gato"){
-      const newGato = new Gato(idMascota, tipoMascota, nombreMascota, pesoMascota);
-      arregloAnimales.registar(newGato);
-    }
+  const { idMascota, tipoMascota, nombreMascota, pesoMascota } = infoMascotas;
 
-    if( tipoMascota === "hamster"){
-      const newHamster = new Hamster(idMascota, tipoMascota, nombreMascota, pesoMascota);
-      arregloAnimales.registar(newHamster);
-    }
+  if (!validaNombre(nombreMascota)) {
+    console.log("Nombre de mascota no valido.");
+    return;
+  }
 
-    addSelectOption(nombreMascota, 'selectAnimales');
-}
-);
+  if (!validaPeso(pesoMascota)) {
+    console.log("Peso de la mascota no es numérico");
+    return;
+  }
+
+  if (tipoMascota === "perro") {
+    const newPerro = new Perro(
+      idMascota,
+      tipoMascota,
+      nombreMascota,
+      pesoMascota
+    );
+    arregloAnimales.registar(newPerro);
+  }
+
+  if (tipoMascota === "gato") {
+    const newGato = new Gato(
+      idMascota,
+      tipoMascota,
+      nombreMascota,
+      pesoMascota
+    );
+    arregloAnimales.registar(newGato);
+  }
+
+  if (tipoMascota === "hamster") {
+    const newHamster = new Hamster(
+      idMascota,
+      tipoMascota,
+      nombreMascota,
+      pesoMascota
+    );
+    arregloAnimales.registar(newHamster);
+  }
+
+  addSelectOption(nombreMascota, "selectAnimales");
+  addRow(infoMascotas);
+
+  alert("Mascota registrada con éxito");
+});
